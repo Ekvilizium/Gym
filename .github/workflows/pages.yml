@@ -145,3 +145,5 @@ jobs:
 # Release 27.5.2: cancel unfinished workouts
 
 # Release 27.5.3: start workout label
+
+# Release 27.5.4: explicit plan save feedback
