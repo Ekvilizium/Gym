@@ -1,0 +1,4 @@
+import {KEY} from './engine';
+export function removeDraft(key:string,storage:Pick<Storage,'getItem'|'setItem'>=localStorage){const state=JSON.parse(storage.getItem(KEY)||'null');if(!state||state.version!==3||!state.sessions)throw Error('Invalid storage');const session=state.sessions[key];if(!session||session.finished!==false)throw Error('Only unfinished workouts can be removed');delete state.sessions[key];storage.setItem(KEY,JSON.stringify(state));}
+export function confirmDraftRemoval(){return confirm('Отменить тренировку? Введённые веса, повторения и подходы будут удалены. Программа останется без изменений.')}
+export function clearDraftTimer(key:string){const [, ,day]=key.split('|');if(localStorage.getItem('gym-workout-date')===key.split('|')[0]&&localStorage.getItem('gym-workout-day')===day)localStorage.removeItem('gym-rest-end')}
