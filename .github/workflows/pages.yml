@@ -113,3 +113,5 @@ jobs:
 # Release 26.8: set metadata and exercise rest
 
 # Release 26.9: plate calculator
+
+# Release 27.0: supersets, remove plate calculator
