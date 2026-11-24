@@ -64,3 +64,5 @@ jobs:
 # Preview release 8: strength records and volume analytics
 
 # Rebuild after TS2538 photo comparison fix
+
+# Preview release 10: photo backup and restore
