@@ -141,3 +141,5 @@ jobs:
 # Release 27.5: focused home dashboard
 
 # Release 27.5.1: fix Home TypeScript compilation
+
+# Release 27.5.2: cancel unfinished workouts
