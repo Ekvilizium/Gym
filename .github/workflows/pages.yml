@@ -37,6 +37,11 @@ jobs:
           cp -r react-source/dist/assets site/next/
           cp react-source/dist/next.html site/next/index.html
           cp react-source/preview-sw.js site/next/sw.js
+          mkdir -p site/next/models
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/Charleeh/ecorche/320805e06aee51e2e6f6b22533eb2a59d43f2d4d/model/ecorche.meshopt.glb' -o site/next/models/ecorche.meshopt.glb
+          test "$(git hash-object site/next/models/ecorche.meshopt.glb)" = 72b73aaac9951876e889736128800dbf7674758a
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/Charleeh/ecorche/320805e06aee51e2e6f6b22533eb2a59d43f2d4d/ATTRIBUTION.md' -o site/next/models/ATTRIBUTION.md
+          printf '%s\n' 'CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/' >> site/next/models/ATTRIBUTION.md
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
