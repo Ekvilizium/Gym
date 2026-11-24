@@ -1,0 +1,52 @@
+name: Publish Gym
+on:
+  push:
+    branches: [main, engine-next]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - run: |
+          mkdir -p site
+          cp index.html sw.js icon.svg manifest.webmanifest site/
+      - uses: actions/checkout@v4
+        with:
+          ref: engine-next
+          path: react-source
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - working-directory: react-source
+        run: |
+          npm install
+          npm test
+          npm run build
+      - run: |
+          mkdir -p site/next
+          cp -r react-source/dist/assets site/next/
+          cp react-source/dist/next.html site/next/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
