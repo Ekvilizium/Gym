@@ -1,4 +1,4 @@
-const CACHE='gym-shell-v6';
+const CACHE='gym-shell-v7';
 self.addEventListener('install',e=>{e.waitUntil(self.skipWaiting())});
 self.addEventListener('activate',e=>{e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('gym-shell-')&&k!==CACHE)await caches.delete(k);await self.clients.claim()})())});
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;if(e.request.mode==='navigate'){e.respondWith((async()=>{try{const r=await fetch(e.request,{cache:'no-store'});if(r.ok){const c=await caches.open(CACHE);await c.put(new URL('./index.html',self.location.href).href,r.clone())}return r}catch(err){return await caches.match(new URL('./index.html',self.location.href).href)||Response.error()}})())}});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;if(new URL(e.request.url).pathname.startsWith(new URL('./next/',self.location.href).pathname))return;if(e.request.mode==='navigate'){e.respondWith((async()=>{try{const r=await fetch(e.request,{cache:'no-store'});if(r.ok){const c=await caches.open(CACHE);await c.put(new URL('./index.html',self.location.href).href,r.clone())}return r}catch(err){return await caches.match(new URL('./index.html',self.location.href).href)||Response.error()}})())}});
