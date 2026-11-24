@@ -143,3 +143,5 @@ jobs:
 # Release 27.5.1: fix Home TypeScript compilation
 
 # Release 27.5.2: cancel unfinished workouts
+
+# Release 27.5.3: start workout label
