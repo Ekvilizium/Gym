@@ -62,3 +62,5 @@ jobs:
 # Preview release 7: workout wake lock and automatic set navigation
 
 # Preview release 8: strength records and volume analytics
+
+# Rebuild after TS2538 photo comparison fix
