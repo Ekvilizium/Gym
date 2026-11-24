@@ -117,3 +117,5 @@ jobs:
 # Release 27.0: supersets, remove plate calculator
 
 # Release 27.0.1: grouped superset rounds
+
+# Hotfix 27.0.2: nullable workout state
