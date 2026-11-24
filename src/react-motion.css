@@ -18,3 +18,5 @@
 .previous-set{display:block;font-size:9px;line-height:1.2;overflow-wrap:anywhere;opacity:.8;font-variant-numeric:tabular-nums}.exercise-picker select{width:100%;max-width:100%;font-size:16px}
 
 .set-meta{display:grid!important;grid-template-columns:26px minmax(0,1fr) minmax(0,90px);gap:6px;align-items:center;margin:6px 0}.set-meta select,.set-options select{min-width:0;max-width:100%;font-size:16px}.set-options>label{display:block;margin:8px 0}
+
+.superset-round{border:1px solid var(--line,#34404d);border-radius:14px;padding:10px;margin:10px 0;display:grid;gap:8px}.superset-round>div>small{display:block;margin-bottom:5px}.superset-round .set{margin:0}
