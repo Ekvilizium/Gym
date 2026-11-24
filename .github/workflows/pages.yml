@@ -36,6 +36,7 @@ jobs:
           mkdir -p site/next
           cp -r react-source/dist/assets site/next/
           cp react-source/dist/next.html site/next/index.html
+          cp react-source/preview-sw.js site/next/sw.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
